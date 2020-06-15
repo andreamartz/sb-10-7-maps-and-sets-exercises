@@ -5,5 +5,6 @@
 
 // What does the following code return?
 
-console.log(new Set([1, 1, 2, 2, 3, 4]));
-// it returns
+new Set([1, 1, 2, 2, 3, 4]);
+// console.log(new Set([1, 1, 2, 2, 3, 4]));
+// it returns {1,2,3,4}, a set
