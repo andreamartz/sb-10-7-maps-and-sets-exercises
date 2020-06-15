@@ -31,3 +31,26 @@ m.set([1, 2, 3], false);
 // console.log(m);
 // m looks like this: { [1,2,3]: true, [1,2,3]: false } because arrays are reference types.
 // To avoid this "strange" behavior, we'd need to create a variable to hold each key that is an array.
+
+// ******************************************************
+// hasDuplicate
+// ******************************************************
+// Write a function called hasDuplicate which accepts an array and
+// returns true or false if that array contains a duplicate
+
+const hasDuplicate = (arr) => {
+  const arrFromSet = [...new Set(arr)];
+  return arrFromSet.length === arr.length ? false : true;
+};
+
+const hasDuplicate2 = (arr) => new Set(arr).size !== arr.length;
+
+hasDuplicate([1, 3, 2, 1]); // true
+hasDuplicate([1, 5, -1, 4]); // false
+hasDuplicate2([1, 3, 2, 1]); // true
+hasDuplicate2([1, 5, -1, 4]); // false
+
+// console.log(hasDuplicate([1, 3, 2, 1])); // true
+// console.log(hasDuplicate([1, 5, -1, 4])); // false
+// console.log(hasDuplicate2([1, 3, 2, 1])); // true
+// console.log(hasDuplicate2([1, 5, -1, 4])); // false
