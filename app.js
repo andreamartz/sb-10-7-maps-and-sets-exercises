@@ -54,3 +54,55 @@ hasDuplicate2([1, 5, -1, 4]); // false
 // console.log(hasDuplicate([1, 5, -1, 4])); // false
 // console.log(hasDuplicate2([1, 3, 2, 1])); // true
 // console.log(hasDuplicate2([1, 5, -1, 4])); // false
+
+// ******************************************************
+// vowelCount
+// ******************************************************
+
+// Write a function called vowelCount which accepts a string and
+// returns a map where the keys are numbers and the values
+// are the count of the vowels in the string.
+
+const vowelsSet = new Set(["a", "e", "i", "o", "u"]); // {"a", "e", "i", "o", "u"}
+const strVowels = (arr) => arr.filter((letter) => vowelsSet.has(letter)); // ["a", "m", "e", "r", "i", "c", "a"] => ["a", "e", "i"]
+
+const vowelCount = (str) => {
+  let strArr = str.toLowerCase().split(""); // ["a", "m", "e", "r", "i", "c", "a"]
+  const vowelsInStr = strVowels(strArr); // ["a", "m", "e", "r", "i", "c", "a"] => ["a", "e", "i", "a"]
+  const resultMap = new Map();
+  console.log("resultMap ", resultMap);
+  for (let vowel of vowelsInStr) {
+    // vowel in resultMap ? val++ : 1;
+    if (resultMap.has(vowel)) {
+      // add one to count
+      resultMap.set(vowel, resultMap.get(vowel) + 1);
+    } else {
+      resultMap.set(vowel, 1);
+    }
+  }
+  console.log("resultMap99 ", resultMap);
+};
+
+vowelCount("awesome"); // Map { 'a' => 1, 'e' => 2, 'o' => 1 }
+vowelCount("Colt"); // Map { 'o' => 1 }
+vowelCount("America"); // Map { 'a' => 2, 'e' => 1, 'i' => 1 }
+
+// console.log(vowelCount("America")); // Map { 'a' => 2, 'e' => 1, 'i' => 1 }
+// console.log(vowelCount("awesome")); // Map { 'a' => 1, 'e' => 2, 'o' => 1 }
+// console.log(vowelCount("Colt")); // Map { 'o' => 1 }
+
+// Notes:
+// 1. Have: "america"
+// 2. create strArr ["a", "m", "e", "r", "i", "c", "a"]
+// get a set of vowels: { 'a', 'e', 'i', 'o', 'u' }
+// Create strVowels that filters strArr to keep only the vowels (using the set of vowels as a reference).
+//   Now you have strVowels = ["a", e", "i", "a"].
+// Create a set of unique values from the filtered strArr.
+//   Now you have {"a", "e", "i"}
+// Create an array of subarrays. Each subarray should contain a vowel and a count for that vowel
+//   Now you have [["a", 2], ["e", 1], ["i", 1]]
+
+//
+// 98. Plug the array of subarrays (i.e., [["a", 2], ["e", 1], ["i", 1]]) into new Map like this:
+//   new Map([["a", 2], ["e", 1], ["i", 1]])
+// 99. Goal: a map:  { 'a' => 2, 'e' => 1, 'i' => 1 }
