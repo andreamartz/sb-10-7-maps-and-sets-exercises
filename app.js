@@ -70,26 +70,23 @@ const vowelCount = (str) => {
   let strArr = str.toLowerCase().split(""); // ["a", "m", "e", "r", "i", "c", "a"]
   const vowelsInStr = strVowels(strArr); // ["a", "m", "e", "r", "i", "c", "a"] => ["a", "e", "i", "a"]
   const resultMap = new Map();
-  console.log("resultMap ", resultMap);
   for (let vowel of vowelsInStr) {
-    // vowel in resultMap ? val++ : 1;
     if (resultMap.has(vowel)) {
-      // add one to count
       resultMap.set(vowel, resultMap.get(vowel) + 1);
     } else {
       resultMap.set(vowel, 1);
     }
   }
-  console.log("resultMap99 ", resultMap);
+  return resultMap;
 };
 
 vowelCount("awesome"); // Map { 'a' => 1, 'e' => 2, 'o' => 1 }
 vowelCount("Colt"); // Map { 'o' => 1 }
 vowelCount("America"); // Map { 'a' => 2, 'e' => 1, 'i' => 1 }
 
-// console.log(vowelCount("America")); // Map { 'a' => 2, 'e' => 1, 'i' => 1 }
-// console.log(vowelCount("awesome")); // Map { 'a' => 1, 'e' => 2, 'o' => 1 }
-// console.log(vowelCount("Colt")); // Map { 'o' => 1 }
+console.log(vowelCount("awesome")); // Map { 'a' => 1, 'e' => 2, 'o' => 1 }
+console.log(vowelCount("Colt")); // Map { 'o' => 1 }
+console.log(vowelCount("America")); // Map { 'a' => 2, 'e' => 1, 'i' => 1 }
 
 // Notes:
 // 1. Have: "america"
